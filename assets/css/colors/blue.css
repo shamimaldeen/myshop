@@ -1,0 +1,150 @@
+/*Default color*/
+.text-colored,
+.dark-bg-btn:hover,
+.social-icons .list-inline li a,
+.nav-list>li>a:hover,
+.nav-frame ul li a:hover,
+.nav-frame ul li a:focus,
+.nav-frame ul li span:hover,
+.nav-frame ul li span:focus,
+.ion-plus-round,
+.social_svg_frame h4 a:hover,
+.social_svg_frame h4 a:focus,
+.package:hover .btn,
+.with-border .package:hover .price-header span,
+.with-border .package:hover .price-header h3,
+.with-border .package:hover .visits h3,
+.with-border .package:hover .price-box span,
+.with-border .package:hover .price-box h1,
+.with-border .package:hover .features p,
+.social-icon-profile li:hover a,
+hr.contact-hr:before,
+footer .footer-social li a span:hover,
+footer .mail-info a:hover,
+.summit-nav>li.active>a h5,
+.toggle-questions .panel .panel-title a:hover,
+.panel-title .accordion-toggle-icon:before,
+.blog a.read-more,
+.blogtag-light-gray:hover,
+.blog .item:hover h3 a,
+.posts-next-prev a,
+.blog .item:hover h3 a,
+.meta-blog-post li.meta-categories ul li a:hover,
+.blog-widget .row:hover h6,
+.widgets a:hover,
+.portfolio-categories li:hover a,
+.nav-frame ul li.active a,
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a,
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus,
+.dropdown-menu>.active>a:hover,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu .elements-row ul li a:hover,
+.dropdown-menu .elements-row ul li a:focus,
+.nav>li>a:focus,
+.nav>li>a:hover,
+.btn-white,
+.btn-white:hover,
+.btn-white:focus,
+.btn-dark-bg:hover,
+.btn-ghost,
+.patchwork-lists li span,
+.patchwork-nav>li.active>a h5,
+.patchwork-nav>li.active>a p,
+.map-information span,
+#circular-counters .circles-subtitle,
+#copyright a:hover,
+.icon-blue {
+    color: #2196F3;
+}
+
+/*Default background color*/
+.bg-colored,
+.btn-colored,
+.btn-light:hover,
+.menu-icon-wrapper svg,
+.navbar-toggle span,
+.navbar-toggle .icon-bar,
+.change-header-style .navbar-collapse,
+.package:hover,
+.skills .sonny_progressbar .bar,
+.blog-other-pages,
+.label-colored,
+.btn-gray:hover,
+.btn-ghost:hover,
+.btn-ghost:focus,
+h3.text-center.font-poppins.emphasis,
+#portfolio .filter-pack li.active,
+.lets-social .col-sm-2:hover .social-frame,
+.project-color1 {
+    background-color: #2196F3;
+}
+
+/*Overrides the default color*/
+.skills .sonny_progressbar .bar {
+    background-color: #2196F3 !important;
+}
+
+/*Border 1px default color*/
+.btn-light:hover,
+.ion-plus-round,
+.form-group textarea:focus,
+.portfolio-categories li:hover,
+.form-group input:focus,
+select:focus,
+.form-group textarea:focus,
+.portfolio-categories li:hover {
+    border: 1px solid #2196F3;
+}
+
+/*Border 2px default color*/
+.newsletter-section .form-group input:focus,
+.newsletter-section .has-error .form-control,
+.newsletter-section .has-error .form-control:hover,
+.btn-gray:hover,
+.btn-ghost,
+.btn-ghost:hover,
+.btn-ghost:focus,
+.btn-colored,
+.with-border .package-frame .package,
+.newsletter input,
+.newsletter input:focus,
+#countdown div,
+.border-round,
+footer aside hr {
+    border: 2px solid #2196F3;
+}
+
+/*Darker Color for hover state*/
+.btn-colored:hover {
+    background-color: #0069bd;
+    border: 2px solid #0069bd !important;
+}
+
+/*Light Pricing table*/
+.with-border .package-frame .package {
+    background-color: rgba(33, 150, 243, 0.1);
+}
+
+/*Video overlay color*/
+.video-overlay {
+    background: rgba(33, 150, 243, 0.85);
+}
+
+/*Underlined color on texts*/
+.text-underlined-colored {
+    text-decoration-color: #2196f3;
+}
+
+/*Blockquote left-color*/
+blockquote {
+    border-left-color: #2196F3;
+}
+
+/*SVG Counters color*/
+#circular-counters .circle path:nth-child(2) {
+    stroke: #2196f3;
+}

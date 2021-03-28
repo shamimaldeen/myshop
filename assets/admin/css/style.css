@@ -1,0 +1,63 @@
+.breadcrumbs-top .breadcrumb{
+    float: right;
+}
+.main-menu.menu-light .navigation li a
+{
+    color: #fff;
+}
+.main-menu.menu-light .navigation > li.open{
+    color: #fff;
+}
+.main-menu.menu-light .navigation .navigation-header{
+    color: #fff;
+}
+
+.main-menu.menu-light .navigation > li.hover > a,
+.main-menu.menu-light .navigation > li:hover > a,
+.main-menu.menu-light .navigation > li.active > a {
+    /* color: #2c3648; */
+    /* background-color: whitesmoke; */
+
+    color: #fff;
+    background: rgba(200, 200, 200, 0.2);
+}
+.star-color {
+    color:#ffc600!important;
+}
+.main-menu.menu-light .navigation > li ul {
+    background: linear-gradient(45deg, #780206, #061161);
+    background-repeat: repeat-x;
+}
+
+.main-menu.menu-light .navigation > li ul li.hover > a,
+.main-menu.menu-light .navigation > li ul li:hover > a,
+.main-menu.menu-light .navigation > li ul li.active > a,
+.main-menu.menu-light .navigation > li.open > a{
+    /* color: #2c3648; */
+    /* background-color: whitesmoke; */
+    color: #fff;
+    background: rgba(200, 200, 200, 0.2);
+}
+body.vertical-layout.vertical-menu.menu-expanded .main-menu {
+    width: 240px;
+    transition: 300ms ease all;
+    backface-visibility: hidden;
+    opacity: 0.9;
+}
+
+.main-menu.menu-light .navigation > li ul .open .hover > a {
+    background: rgba(200, 200, 200, 0.2);
+}
+.main-menu.menu-light .navigation > li.open .hover > a {
+    background: rgba(200, 200, 200, 0.2);
+}
+.main-menu.menu-light .navigation > li ul .open > a {
+    color: #fff;
+}
+.ps-theme-dark > .ps-scrollbar-y-rail > .ps-scrollbar-y,
+.ps-theme-dark:hover.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail > .ps-scrollbar-x,
+.ps-theme-dark:hover.ps-in-scrolling.ps-x > .ps-scrollbar-x-rail ,
+.ps-theme-dark:hover > .ps-scrollbar-y-rail:hover > .ps-scrollbar-y {
+    /*background-color: rgba(0, 0, 0, 0.4);*/
+    background-color: #fff;
+}
