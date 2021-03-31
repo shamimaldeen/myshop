@@ -283,7 +283,7 @@
                                             <label class="col-md-12"><strong style="text-transform: uppercase;">Pay Amount</strong></label>
                                             <div class="col-md-12">
                                                 <div class="input-group">
-                                                    <input name="due_pay_amount" id="due_pay_amount" class="form-control bold pay_amount" value="0" required="" placeholder="Pay Amount" />
+                                                    <input name="due_pay_amount" id="due_pay_amount" class="form-control bold pay_amount" value="0"   placeholder="Pay Amount" />
                                                     <span class="input-group-addon"><strong>{{ $basic->currency }}</strong></span>
                                                 </div>
                                             </div>
@@ -336,7 +336,7 @@
                                             <label class="col-md-12"><strong style="text-transform: uppercase;">Pay Amount</strong></label>
                                             <div class="col-md-12">
                                                 <div class="input-group">
-                                                    <input name="ins_pay_amount" id="instalment_pay" class="form-control bold pay_amount" value="0" required="" placeholder="Pay Amount" />
+                                                    <input name="ins_pay_amount" id="instalment_pay" class="form-control bold pay_amount" value="0"  placeholder="Pay Amount" />
                                                     <span class="input-group-addon"><strong>{{ $basic->currency }}</strong></span>
                                                 </div>
                                             </div>

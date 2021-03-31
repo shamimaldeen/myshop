@@ -49,7 +49,7 @@ class SellController extends Controller
 
     public function submitSell(Request $request)
     {
-//        dd($request->all());
+      // dd($request->all());
          $basic = BasicSetting::first();
         $custom = 'SL-' . date('ymdHis');
         $date = $request->created_at;
