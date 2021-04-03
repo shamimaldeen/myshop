@@ -260,6 +260,9 @@ New Aman Electronics,";
 
     public function submitInstalmentRepayment(Request $request)
     {
+
+//       $data =  $request->all();
+//       dd($data);
         $instalment = InstalmentTime::findOrFail($request->instalmentTime_id);
         $payable = $instalment->amount - $request->ins_discount;
         if($payable <= $request->pay_amount){
@@ -282,9 +285,14 @@ New Aman Electronics,";
         $re['post_due'] = $instalment->amount;
         $re['time_id'] = $request->instalmentTime_id;
         $re['amount'] = $request->instalmentTime_id;
+
+        //dd($re);
         Repayment::create($re);
 
         $instalment->pay_amount = $request->pay_amount;
+        $instalment->updated_at = $request->payment_date;
+
+
         $instalment->ins_discount = $request->ins_discount;
         $instalment->status = 1;
         $instalment->custom = $custom;
@@ -448,6 +456,7 @@ New Aman Electronics,";
     {
         $data['page_title'] = 'Instalment Repayment Receipt';
         $data['sell'] = InstalmentTime::whereCustom($invoice)->firstOrFail();
+       // dd($data['sell']);
         return view('repayment.instalment-repayment-receipt-print', $data);
     }
 
@@ -455,6 +464,7 @@ New Aman Electronics,";
     {
         $page_title = 'Instalment Repayment History';
         $history1  = Repayment::with('customer')->whereType(2)->latest()->get()->toArray();
+       // dd($history1);
         return view('repayment.instalment-repayment-history', compact('page_title','history1'));
     }
 

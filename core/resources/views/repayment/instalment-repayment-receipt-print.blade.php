@@ -89,7 +89,7 @@
             </div>
             <div class="col-xs-6">
                 <p class="text-center"> Receipt : {{ $sell->custom }} <br>
-                    <span class="invoice-extra-p">{{ \Carbon\Carbon::parse($sell->created_at)->format('dS M, Y - h:i A ') }}</span>
+                    <span class="invoice-extra-p">{{ \Carbon\Carbon::parse($sell->updated_at)->format('dS M, Y') }}</span>
                 </p>
                 <div class="text-center">
                     <h5>

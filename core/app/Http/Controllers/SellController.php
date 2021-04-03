@@ -49,7 +49,7 @@ class SellController extends Controller
 
     public function submitSell(Request $request)
     {
-      // dd($request->all());
+       //dd($request->all());
          $basic = BasicSetting::first();
         $custom = 'SL-' . date('ymdHis');
         $date = $request->created_at;
@@ -142,11 +142,13 @@ class SellController extends Controller
 
                     } elseif ($request->payment_type == 1)     //on due paid
                     {
+
+
+
                         $orderT = Order::create();
                         $order = Order::find($orderT->id);
 
                         $product_price = 0;
-
                         foreach ($codes as $c) {
                             $pp = Code::whereCode($c)->firstOrFail();
                             $orderItem['order_id'] = $order->id;
@@ -177,18 +179,18 @@ class SellController extends Controller
 
                         $order->payment_type = $request->payment_type;
                         $order->total_amount = $request->due_total_price;
-                        $order->pay_amount = $request->ins_pay_amount;
-                        $order->due_amount = $request->due_total_price - $request->due_pay_amount;  //$grandDueAmount;
+                        $order->pay_amount = $request->due_pay_amount;
+                        $order->due_amount = $request->due_total_price - $request->due_pay_amount;//$grandDueAmount;
+                        $order->due_payment_date = $request->due_payment_date;
                         $order->status = 2; // Have Due Payment
                         $order->save();
 
-                        $upCustomer->total_amount += $request->due_total_price;
-                        $upCustomer->pay_amount += $request->due_pay_amount;
-                        $upCustomer->save();
+                        $customer->total_amount += $request->due_total_price;
+                        $customer->pay_amount += $request->due_pay_amount;
+                        $customer->save();
 
                         $tr['custom'] = $custom;
                         $tr['created_at'] = $date;
-
                         $tr['type'] = 9; // Sell Product
                         $tr['balance'] = $request->due_pay_amount;
                         $tr['status'] = 0;// David
@@ -200,12 +202,12 @@ class SellController extends Controller
 
                     } elseif ($request->payment_type == 2)      //Installment payment
                     {
+
                         if ($request->instalment_id == null) {
                             session()->flash('message', 'Select A Instalment Type');
                             session()->flash('type', 'warning');
                             return redirect()->back();
                         } else {
-
                             $instalment = Instalment::findOrFail($request->instalment_id);
                             $due_amount = ($request->ins_total_amount - $request->ins_pay_amount); //($request->due_total_price - $request->due_pay_amount);
                             $due_charge = ($instalment->charge / 100) * $due_amount;
@@ -247,18 +249,17 @@ class SellController extends Controller
                             $order->payment_type = $request->payment_type;
                             $order->instalment_id = $request->instalment_id;
                             $order->total_amount = $request->ins_total_amount;
-                            $order->pay_amount = $request->ins_pay_amount;
-                            $order->due_amount = $request->ins_due_amount;//$request->ins_total_amount - $request->ins_pay_amount;
-                            $order->status = 3; // Installment
+                            $order->pay_amount = $request->ins_pay_amount;//$request->due_pay_amount;
+                            $order->due_amount = $grandDueAmount;
+                            $order->status = 3; // Instalmentt
 
-                            $upCustomer->total_amount += $request->ins_total_amount;
-                            $upCustomer->pay_amount += $request->ins_pay_amount;
-                            $upCustomer->save();
-
+                            $customer->total_amount += $request->ins_total_amount;
+                            $customer->pay_amount += $request->ins_pay_amount;
+                            $customer->save();
 
                             $orIns['custom'] = $custom;
-                            $orIns['created_at'] = $date;
                             $orIns['order_id'] = $order->id;
+                            $orIns['created_at'] = $date;
                             $orIns['customer_id'] = $customer->id;
                             $orIns['instalment_id'] = $request->instalment_id;
                             $orIns['total_amount'] = $order->due_amount;
@@ -273,13 +274,6 @@ class SellController extends Controller
                             $orIns['grander_two_father'] = $request->grander_two_father;
                             $orIns['grander_two_phone'] = $request->grander_two_phone;
                             $orIns['grander_two_address'] = $request->grander_two_address;
-
-
-//                            $this->validate($request, [
-//                                'customer_image' => 'required|mimes:png,jpeg,jpg,gif',
-//                                'grander_one_image' => 'required|mimes:png,jpeg,jpg,gif',
-//                                'grander_two_image' => 'required|mimes:png,jpeg,jpg,gif',
-//                            ]);
 
 
                             if ($request->hasFile('customer_image')) {
@@ -309,20 +303,21 @@ class SellController extends Controller
                                 $orIns['grander_two_image'] = $filename;
                             }
 
-
                             $orderInss = OrderInstalment::create($orIns);
+
 
                             $instalment = Instalment::findOrFail($request->instalment_id);
                             $parIns = ceil($grandDueAmount / $instalment->time);
+
                             if ($instalment->duration_type != 0){
                                 $tt = '';
                                 $date1 = $orderInss->created_at;
+
                                 for ($i = 1; $i <= $instalment->time; $i++) {
                                     $insTime['order_instalment_id'] = $orderInss->id;
 //                                    $insTime['amount'] = $parIns;
                                     $insTime['amount'] = $parIns;
-//                                    $tt = Carbon::parse($tt)->addDays($instalment->difference);
-                                      $tt =$date1->addDays($instalment->difference);
+                                    $tt =$date1->addDays($instalment->difference);
                                     $insTime['pay_date'] = $tt;
                                     // dd($insTime);
                                     InstalmentTime::create($insTime);
@@ -334,6 +329,7 @@ class SellController extends Controller
                                 $date1 = $orderInss->created_at;
                                 for ($i = 1; $i <= $instalment->time; $i++) {
                                     $insTime['order_instalment_id'] = $orderInss->id;
+
 //                                    $insTime['amount'] = $parIns;
                                     $insTime['amount'] = $parIns;
 //                                    $tt1 = Carbon::parse($tt)->addDays($instalment->difference);
@@ -356,8 +352,6 @@ class SellController extends Controller
                                 }
 
                             }
-
-
 
                             $order->save();
 
